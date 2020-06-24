@@ -1,0 +1,53 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 6vh;
+}
+.page {
+  display: flex;
+  flex-direction: row;
+  .generation {
+    .buttons {
+      margin: 1% 5%;
+      // justify-content: center;
+      // align-content: center;
+      // align-items: center;
+      // text-align: center;
+      // margin-bottom: 30%;
+      width: 9vw;
+      background-color: white;
+      height: 3vh;
+    }
+  }
+  .preset {
+    justify-content: center;
+    // align-items: center;
+    align-content: center;
+    margin: 1% 2%;
+    button {
+      margin: 0 auto;
+      margin-bottom: 30%;
+      width: 9vw;
+      height: 8vh;
+      background-color: white;
+    }
+  }
+  .rules {
+    margin: 0 auto;
+    margin-right: 3%;
+    h1 {
+      font-size: 5vh;
+    }
+    p {
+      font-size: 2vh;
+    }
+    li {
+      font-size: 1.9vh;
+    }
+    .refer {
+      text-align: right;
+    }
+  }
+}
