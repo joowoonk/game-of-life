@@ -96,7 +96,15 @@ const App = () => {
   console.log(grid);
   return (
     <>
-      <h2 className="title">Coway's Game of Life</h2>
+      <h2 className="title">
+        {" "}
+        <a
+          href="https://github.com/joowoonk/game-of-life/tree/master/game-of-life"
+          target="blank"
+        >
+          Conway's Game of Life
+        </a>
+      </h2>
       <div className="page">
         <div className="generation">
           <h1>Generation:{count}</h1>
