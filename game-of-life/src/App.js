@@ -38,6 +38,9 @@ const App = () => {
   runningRef.current = running;
   const [speed, setSpeed] = useState(100);
 
+  const onInputSpeed = (e) => {
+    setSpeed(e.target.value);
+  };
   //useCallback will help function to run once
   const runSimulation = useCallback(() => {
     if (!runningRef.current) {
@@ -77,13 +80,13 @@ const App = () => {
 
     // const newGrid = produce();
 
-    setTimeout(runSimulation, speed);
+    setTimeout(runSimulation, document.getElementById("speed").value * 100);
   }, []);
   useEffect(() => {
     if (!isStopping) {
       const id = window.setInterval(() => {
         setCount((count) => count + 1);
-      }, speed);
+      }, document.getElementById("speed").value * 100);
 
       return () => window.clearInterval(id);
     } else {
@@ -127,7 +130,7 @@ const App = () => {
 
           {running && (
             <button
-              className="buttons"
+              className="controller"
               onClick={() => {
                 setRunning(!running);
                 if (!running) {
@@ -143,7 +146,7 @@ const App = () => {
           )}
           {!running && (
             <button
-              className="buttons"
+              className="controller"
               onClick={() => {
                 setRunning(!running);
                 if (!running) {
@@ -158,7 +161,7 @@ const App = () => {
             </button>
           )}
           <button
-            className="buttons"
+            className="controller"
             onClick={() => {
               setGrid(generateEmptyGrid());
               setOnce(true);
@@ -170,7 +173,7 @@ const App = () => {
             Clear
           </button>
           <button
-            className="buttons"
+            className="controller"
             onClick={() => {
               //setting the state
               const rows = [];
@@ -186,6 +189,15 @@ const App = () => {
           >
             Random
           </button>
+          <input
+            type="number"
+            // value={speed}
+            // type=""
+            id="speed"
+            className="controller"
+            // onChage={onInputSpeed}
+            placeholder="tenth of second"
+          />
         </div>
 
         <div className="preset">
@@ -244,12 +256,12 @@ const App = () => {
         <div className="rules">
           <h1>Rules</h1>
           <p>
-            "The universe of the Game of Life is an infinite, two-dimensional
+            The universe of the Game of Life is an infinite, two-dimensional
             orthogonal grid of square cells, each of which is in one of two
             possible states, live or dead, (or populated and unpopulated,
             respectively). Every cell interacts with its eight neighbours, which
             are the cells that are horizontally, vertically, or diagonally
-            adjacent. At each step in time, the following transitions occur:"
+            adjacent. At each step in time, the following transitions occur:
           </p>
           <ul>
             <li>
