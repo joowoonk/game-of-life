@@ -12,8 +12,9 @@ a {
 }
 .page {
   display: flex;
-  flex-direction: row;
+
   .generation {
+    margin: 0 auto;
     .controller {
       margin: 1% 5%;
       // justify-content: center;
@@ -27,32 +28,51 @@ a {
     }
   }
   .preset {
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
     // align-items: center;
     align-content: center;
-    margin: 1% 2%;
+    // margin: 1% 2%;
+    h1 {
+      text-align: center;
+    }
     button {
       margin: 0 auto;
       margin-bottom: 30%;
-      width: 9vw;
+      width: 15vw;
       height: 8vh;
       background-color: white;
     }
   }
-  .rules {
-    margin: 0 auto;
-    margin-right: 3%;
-    h1 {
-      font-size: 5vh;
+  @media (max-width: 900px) {
+    .page {
+      display: block;
     }
-    p {
-      font-size: 2vh;
-    }
-    li {
-      font-size: 1.9vh;
-    }
-    .refer {
-      text-align: right;
-    }
+  }
+}
+
+.rules {
+  display: flex;
+  // justify-content: center;
+  // text-align: center;
+  flex-direction: column;
+  width: 90%;
+  // background-color: red;
+  margin: 3% auto;
+  // margin-right: 3%;
+  h1 {
+    font-size: 5rem;
+    text-align: center;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  li {
+    font-size: 1.4rem;
+  }
+  .refer {
+    text-align: right;
   }
 }

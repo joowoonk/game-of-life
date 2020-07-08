@@ -48,28 +48,19 @@ const App = () => {
     }
     setGrid((g) => {
       return produce(g, (gridCopy) => {
-        //simulate
         for (let i = 0; i < numRows; i++) {
           for (let k = 0; k < numCols; k++) {
             let neighbors = 0;
-
-            // if (gridCopy[i][k + 1] === 1) {
-            //   neighbors += 1;
             operations.forEach(([x, y]) => {
               const newI = i + x;
               const newK = k + y;
-
-              //checking if the grid is out of boud...
               if (newI >= 0 && newI < numRows && newK >= 0 && newK < numCols) {
                 neighbors += g[newI][newK];
               }
             });
 
-            //if the current grid doesnt suround by around grids more than 2, it dies.
             if (neighbors < 2 || neighbors > 3) {
               gridCopy[i][k] = 0;
-
-              // or else dead cell can go back to live if there are 3 cells around the current grid
             } else if (g[i][k] === 0 && neighbors === 3) {
               gridCopy[i][k] = 1;
             }
@@ -135,7 +126,6 @@ const App = () => {
               ))
             )}
           </div>
-
           {running && (
             <button
               className="controller"
@@ -203,7 +193,7 @@ const App = () => {
             // type=""
             id="speed"
             className="controller"
-            // onChage={onInputSpeed}
+            defaultValue="1"
             placeholder="tenth of second"
           />
         </div>
@@ -261,59 +251,56 @@ const App = () => {
             timesquare
           </button>
         </div>
-        <div className="rules">
-          <h1>Rules</h1>
-          <p>
-            The universe of the Game of Life is an infinite, two-dimensional
-            orthogonal grid of square cells, each of which is in one of two
-            possible states, live or dead, (or populated and unpopulated,
-            respectively). Every cell interacts with its eight neighbours, which
-            are the cells that are horizontally, vertically, or diagonally
-            adjacent. At each step in time, the following transitions occur:
-          </p>
-          <ul>
-            <li>
-              Any live cell with fewer than two live neighbours dies, as if by
-              underpopulation.
-            </li>
-            <li>
-              Any live cell with two or three live neighbours lives on to the
-              next generation.
-            </li>
-            <li>
-              Any live cell with more than three live neighbours dies, as if by
-              overpopulation.
-            </li>
-            <li>
-              Any dead cell with exactly three live neighbours becomes a live
-              cell, as if by reproduction.
-            </li>
-          </ul>
-          <p>
-            These rules, which compare the behavior of the automaton to real
-            life, can be condensed into the following:
-          </p>
-          <ul>
-            <li>Any live cell with two or three live neighbours survives.</li>
-            <li>
-              Any dead cell with three live neighbours becomes a live cell.
-            </li>
-            <li>
-              All other live cells die in the next generation. Similarly, all
-              other dead cells stay dead.
-            </li>
-          </ul>
-          <p>
-            The initial pattern constitutes the seed of the system. The first
-            generation is created by applying the above rules simultaneously to
-            every cell in the seed; births and deaths occur simultaneously, and
-            the discrete moment at which this happens is sometimes called a
-            tick. Each generation is a pure function of the preceding one. The
-            rules continue to be applied repeatedly to create further
-            generations.
-          </p>
-          <p className="refer">-from wikipedia</p>
-        </div>
+      </div>
+      <div className="rules">
+        <h1 className="ruleTitle">Rules</h1>
+        <p>
+          The universe of the Game of Life is an infinite, two-dimensional
+          orthogonal grid of square cells, each of which is in one of two
+          possible states, live or dead, (or populated and unpopulated,
+          respectively). Every cell interacts with its eight neighbours, which
+          are the cells that are horizontally, vertically, or diagonally
+          adjacent. At each step in time, the following transitions occur:
+        </p>
+        <ul>
+          <li>
+            Any live cell with fewer than two live neighbours dies, as if by
+            underpopulation.
+          </li>
+          <li>
+            Any live cell with two or three live neighbours lives on to the next
+            generation.
+          </li>
+          <li>
+            Any live cell with more than three live neighbours dies, as if by
+            overpopulation.
+          </li>
+          <li>
+            Any dead cell with exactly three live neighbours becomes a live
+            cell, as if by reproduction.
+          </li>
+        </ul>
+        <p>
+          These rules, which compare the behavior of the automaton to real life,
+          can be condensed into the following:
+        </p>
+        <ul>
+          <li>Any live cell with two or three live neighbours survives.</li>
+          <li>Any dead cell with three live neighbours becomes a live cell.</li>
+          <li>
+            All other live cells die in the next generation. Similarly, all
+            other dead cells stay dead.
+          </li>
+        </ul>
+        <p>
+          The initial pattern constitutes the seed of the system. The first
+          generation is created by applying the above rules simultaneously to
+          every cell in the seed; births and deaths occur simultaneously, and
+          the discrete moment at which this happens is sometimes called a tick.
+          Each generation is a pure function of the preceding one. The rules
+          continue to be applied repeatedly to create further generations.
+        </p>
+        {/* <p className="refer">-</p> */}
       </div>
     </>
   );
